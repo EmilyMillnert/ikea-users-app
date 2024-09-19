@@ -41,6 +41,17 @@ import './App.css'
     useEffect(() => {
       fetchUsers();
     }, []);
+
+    const deleteUser = async (e) => {
+      await fetch(`${hostUrl}api/users/${e.target.dataset.id}`, {
+      method: "DELETE",
+      headers: {
+          "Content-type": "application/json",
+      },
+      });
+      await fetchUsers();
+  }
+  
   
     return (
       <>
@@ -69,6 +80,9 @@ import './App.css'
                 <td>{user.name}</td>
                 <td>{user.isAdmin.toString()}</td>
                 <td>{user.site}</td>
+                <td>
+                  <button data-id={user.id} onClick={deleteUser}>Delete <style> background-color: green </style></button>
+                </td>
               </tr>
             ))}
           </tbody>
