@@ -1,35 +1,51 @@
-import { useState } from 'react'
+/*import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from '/vite.svg'*/
+import { useEffect, useState } from "react";
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>HEllo IKEA!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+/*new code*/
+  
+  function App() {
+    const [users, setUsers] = useState([]);
+    const hostUrl = import.meta.env.PROD
+      ? window.location.href
+      : "http://localhost:8080/";
+  
+    const fetchUsers = async () => {
+      const response = await fetch(`${hostUrl}api/users`);
+      const usersToJson = await response.json();
+      console.log(usersToJson)
+      setUsers(usersToJson);
+    };
+    useEffect(() => {
+      fetchUsers();
+    }, []);
+  
+    return (
+      <>
+        <h1>Users</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Is Admin</th>
+              <th>Site</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.isAdmin.toString()}</td>
+                <td>{user.site}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    );
+  }
+  
+  export default App;
+  
