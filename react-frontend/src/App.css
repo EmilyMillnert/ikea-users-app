@@ -1,3 +1,14 @@
+/*@font-face{
+  font-family: "Noto IKEA Latin";
+  src:url(https://www.ikea.com/global/assets/fonts/woff2/noto-ikea-400.latin.63019780.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto IKEA";
+  src: url(https://www.ikea.com/global/assets/fonts/woff2/noto-ikea-700.latin.63019780.woff2) format("woff2");
+  font-weight: bold;
+}*/
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,8 +16,89 @@
   text-align: center;
 }
 
+*{
+  font-family: "Roboto";
+}
+
+body{
+  margin:0;
+  height:100vh;
+}
+
+.container{
+  margin:0;
+  padding:0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid: 78px auto 80px/100%;
+  background-color: beige;
+}
+
+header {
+  background-color:black;
+}
+
+.inner-container{
+  margin: 15px 15px 15px 15px; 
+  padding: 0 0px 0 0px;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.ikea-icon { /*placed in the header*/
+  width: 7.25em;
+  height: 3em;
+  display:flex;
+  align-items:center;
+}
+
+.text-heading1{
+  color:white;
+  font-family: "Roboto";
+  font-size:1.7em;
+  align-items:center;
+  font-weight: bold;
+}
+
+main{
+  background-color: white;
+  display: grid;
+}
+
+footer{
+    display:flex;
+    background-color: BLACK;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    COLOR:WHITE;
+}
+
+p{
+  font-size:0.8em;
+}
+
+h1{
+  color:black;
+  font-family: "Roboto";
+  font-size:1.7em;
+}
+
+h2{
+  color: blue;
+}
+
+input[type=submit]{
+  background-color: black;
+  color:white;
+}
+
 .button{
-  background-color: green;
+  background-color: black;
+  color: white;
 }
 
 .logo {

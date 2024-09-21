@@ -10,6 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@ingka/button": "^16.0.7",
+    "@ingka/focus": "^5.0.5",
+    "@ingka/hyperlink": "^7.0.6",
+    "@ingka/ssr-icon": "^10.6.2",
+    "@ingka/svg-icon": "^6.0.3",
+    "@ingka/tag": "^3.0.12",
+    "@ingka/text": "^4.0.4",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

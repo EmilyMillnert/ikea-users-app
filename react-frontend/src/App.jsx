@@ -1,11 +1,15 @@
-/*import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'*/
-import { useEffect, useState } from "react";
+import { useEffect, useState, Component } from "react";
 import './App.css'
+import Typography from "@mui/material/Typography";
+//import Button from '@ingka/button';
+//import Hyperlink from '@ingka/hyperlink';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
 
-/*new code*/
-  
+
   function App() {
     const [users, setUsers] = useState([]);
     const hostUrl = import.meta.env.PROD
@@ -52,18 +56,19 @@ import './App.css'
       await fetchUsers();
   }
   
-  
-    return (
-      <>
-      <h1>New User</h1>
-      <form onSubmit={createUser}>
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" />
-        <label htmlFor="isAdmin">Is Admin</label>
-        <input type="checkbox" name="isAdmin" />
-        <input type="text" name="site" />
-        <input type="submit" />
-      </form>
+
+      return (
+        <>
+        <h1>New User</h1>
+        <form onSubmit={createUser}>
+          <label htmlFor="name">Name</label>
+          <input type="text" name="name" id="name" />
+          <label htmlFor="isAdmin">Is Admin</label>
+          <input type="checkbox" name="isAdmin" />
+          <label htmlFor="site">Site</label>
+          <input type="text" name="site"/> 
+          <input type="submit"/>
+         </form>
 
         <h1>Users</h1>
         <table>
@@ -72,6 +77,7 @@ import './App.css'
               <th>Name</th>
               <th>Is Admin</th>
               <th>Site</th>
+              <th>Delete user</th>
             </tr>
           </thead>
           <tbody>
@@ -81,7 +87,9 @@ import './App.css'
                 <td>{user.isAdmin.toString()}</td>
                 <td>{user.site}</td>
                 <td>
-                  <button data-id={user.id} onClick={deleteUser}>Delete <style> background-color: green </style></button>
+                  <IconButton aria-label="delete" color="secondary" data-id={user.id} onClick={deleteUser}> 
+                  <DeleteIcon />
+                  </IconButton>
                 </td>
               </tr>
             ))}
@@ -89,7 +97,8 @@ import './App.css'
         </table>
       </>
     );
-  }
+  
+}
   
   export default App;
   

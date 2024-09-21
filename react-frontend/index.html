@@ -1,13 +1,42 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!--stylesheet for static components-->
+    <link rel="stylesheet" type="text/css" href="react-frontend/App.css" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+
+    <title>IKEA user directory</title>
+
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Vite + React</title>-->
   </head>
+
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <div class ="container">
+    <!--header with IKEA logo-->
+      <header> 
+        <div class="inner-container">
+         
+            <a href="https://ikea.com" target="blank">
+            <img src="../../ikeawhite.png" alt="IKEA logo" class="ikea-icon"/>
+            </a>
+          
+        <span class="text-heading1">IKEA User Directory</span>  
+        </div>
+      </header>
+
+      <main>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+      </main>
+
+      <footer>
+        <p>© Ingka Holding B.V. 2024</p>
+      </footer>
+    </div>
   </body>
+
 </html>
