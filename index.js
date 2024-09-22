@@ -16,7 +16,7 @@ const sequelize = new Sequelize({
 class User extends Model {}
 User.init({
     name: DataTypes.STRING,
-    isAdmin: DataTypes.BOOLEAN,
+    isManager: DataTypes.BOOLEAN,
     site: DataTypes.STRING,
 }, { sequelize, modelName: 'user' });
 
@@ -24,11 +24,11 @@ User.init({
 sequelize.sync();
 
 const users = [
-    { name: "Andreas Andersson",  isAdmin: false, site:"MAlmo"},
-    { name: "Emily Millnert", isAdmin: false, site:"MAlmo"},
-    { name: "Erik Elvland", isAdmin: false, site:"HBG"},
-    { name: "Robert Waltercrantz", isAdmin: false, site: "Almhult"},
-    { name: "David Charlton", isAdmin: false, site:"Philly" }
+    { name: "Andreas Andersson",  isManager: false, site:"Malmo"},
+    { name: "Emily Millnert", isManager: false, site:"Malmo"},
+    { name: "Erik Elvland", isManager: false, site:"HBG"},
+    { name: "Robert Waltercrantz", isManager: false, site: "Almhult"},
+    { name: "David Charlton", isManager: false, site:"Philly" }
 ];
 
 // .use is middleware - something that occurs between the request and response cycle.
@@ -67,10 +67,10 @@ app.post('/api/users', async (req, res) => {
 });
 
 app.put("/api/users/:id", async (req, res) => {
-    const { name, isAdmin, site } = req.body;
+    const { name, isManager, site } = req.body;
 
     const user = await User.findByPk(req.params.id);
-    await user.update({ name, isAdmin, site});
+    await user.update({ name, isManager, site});
     await user.save();
     res.json(user);
 });

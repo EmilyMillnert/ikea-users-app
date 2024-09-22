@@ -96,11 +96,6 @@ input[type=submit]{
   color:white;
 }
 
-.button{
-  background-color: black;
-  color: white;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -112,6 +107,10 @@ input[type=submit]{
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+table{
+  text-align: center;
 }
 
 @keyframes logo-spin {

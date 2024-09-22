@@ -32,7 +32,7 @@ import Stack from '@mui/material/Stack';
       },
       body: JSON.stringify({ 
         name: e.target.name.value, 
-        isAdmin: e.target.isAdmin.checked, 
+        isManager: e.target.isManager.checked, 
         site: e.target.site.value
         }),
       });
@@ -63,8 +63,8 @@ import Stack from '@mui/material/Stack';
         <form onSubmit={createUser}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" />
-          <label htmlFor="isAdmin">Is Admin</label>
-          <input type="checkbox" name="isAdmin" />
+          <label htmlFor="isManager">Manager</label>
+          <input type="checkbox" name="isManager" />
           <label htmlFor="site">Site</label>
           <input type="text" name="site"/> 
           <input type="submit"/>
@@ -75,7 +75,7 @@ import Stack from '@mui/material/Stack';
           <thead>
             <tr>
               <th>Name</th>
-              <th>Is Admin</th>
+              <th>Manager</th>
               <th>Site</th>
               <th>Delete user</th>
             </tr>
@@ -84,7 +84,7 @@ import Stack from '@mui/material/Stack';
             {users.map((user) => (
               <tr key={user.id}>
                 <td>{user.name}</td>
-                <td>{user.isAdmin.toString()}</td>
+                <td>{user.isManager.toString()}</td>
                 <td>{user.site}</td>
                 <td>
                   <IconButton aria-label="delete" color="secondary" data-id={user.id} onClick={deleteUser}> 
