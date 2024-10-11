@@ -38,15 +38,11 @@ app.use(express.json());
 // This will serve the React build when we deploy our app
 app.use(express.static("react-frontend/dist"));
 
-// This route will return 'Hello Ikea!' when you go to localhost:8080/ in the browser
-app.get("/", (req, res) => {
-    res.json({ data: 'Hello Ikea!' });
-});
-
 app.get('/api/seeds', async (req, res) => {
     users.forEach(u => User.create(u));
     res.json(users);
 });
+
 app.put('/api/seeds', async (req,res) => {
     console.log(User);
 });
@@ -68,7 +64,6 @@ app.post('/api/users', async (req, res) => {
 
 app.put("/api/users/:id", async (req, res) => {
     const { name, isManager, site } = req.body;
-
     const user = await User.findByPk(req.params.id);
     await user.update({ name, isManager, site});
     await user.save();
@@ -77,8 +72,12 @@ app.put("/api/users/:id", async (req, res) => {
 
 app.delete('/api/users/:id', async (req, res) => {
     const user = await User.findByPk(req.params.id);
+    if (user==null){
+        res.json({data:`The user with id of ${req.params.id} does not exist.`})
+    } else {
     await user.destroy();
     res.json({data: `The user with id of ${req.params.id} is removed.`});
+    }
 });
 
 

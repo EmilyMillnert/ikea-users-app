@@ -110,7 +110,10 @@ input[type=submit]{
 }
 
 table{
-  text-align: center;
+  display:grid;
+  text-align: right;
+ /* align-items: center;*/
+  justify-content: center;
 }
 
 @keyframes logo-spin {

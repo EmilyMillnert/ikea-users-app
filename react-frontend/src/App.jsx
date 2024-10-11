@@ -44,12 +44,13 @@ import Stack from '@mui/material/Stack';
       fetchUsers();
     }, []);
 
-    const deleteUser = async (e) => {
-      await fetch(`${hostUrl}api/users/${e.target.dataset.id}`, {
-      method: "DELETE",
-      headers: {
+    const deleteUser = async (id) => {
+      console.log('Deleting user ID:', id);
+      await fetch(`${hostUrl}api/users/${id}`, {
+        method: "DELETE",
+        headers: {
           "Content-type": "application/json",
-      },
+        },
       });
       await fetchUsers();
   }
@@ -59,23 +60,27 @@ import Stack from '@mui/material/Stack';
         <>
         <h1>New User</h1>
         <form onSubmit={createUser}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name </label>
           <input type="text" name="name" id="name" />
-          <label htmlFor="isManager">Manager</label>
+          
+          <label htmlFor="isManager"> Manager </label>
           <input type="checkbox" name="isManager" />
-          <label htmlFor="site">Site</label>
+          
+          <label htmlFor="site"> Site </label>
           <input type="text" name="site"/> 
-          <input type="submit"/>
+          
+          <Button type ="submit" variant="contained" color="primary">Creae User
+          </Button>
          </form>
-
+         <br></br>
         <h1>Users</h1>
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Manager</th>
-              <th>Site</th>
-              <th>Delete user</th>
+              <th> Name </th>
+              <th> Manager </th>
+              <th> Site </th>
+              <th> Delete user </th>
             </tr>
           </thead>
           <tbody>
@@ -85,7 +90,7 @@ import Stack from '@mui/material/Stack';
                 <td>{user.isManager.toString()}</td>
                 <td>{user.site}</td>
                 <td>
-                  <IconButton aria-label="delete" color="secondary" data-id={user.id} onClick={deleteUser}> 
+                  <IconButton aria-label="delete" color="secondary" data-id={user.id} onClick={() => deleteUser(user.id)}> 
                   <DeleteIcon />
                   </IconButton>
                 </td>
